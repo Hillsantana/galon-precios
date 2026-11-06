@@ -1,0 +1,10 @@
+{
+  "weeks": [
+    { "start": "2026-09-12", "premium": 341.10, "regular": 310.50, "optimo": 293.10, "gasoil": 262.80, "glp": 135.20, "gn": 43.97 },
+    { "start": "2026-09-19", "premium": 350.10, "regular": 315.50, "optimo": 302.10, "gasoil": 267.80, "glp": 135.20, "gn": 43.97 },
+    { "start": "2026-09-26", "premium": 353.10, "regular": 317.50, "optimo": 306.10, "gasoil": 270.80, "glp": 135.20, "gn": 43.97 },
+    { "start": "2026-10-03", "premium": 353.10, "regular": 317.50, "optimo": 306.10, "gasoil": 270.80, "glp": 135.20, "gn": 43.97 },
+    { "start": "2026-10-10", "premium": 358.10, "regular": 317.50, "optimo": 318.10, "gasoil": 270.80, "glp": 135.20, "gn": 43.97 },
+    { "start": "2026-10-31", "premium": 358.10, "regular": 317.50, "optimo": 318.10, "gasoil": 270.80, "glp": 135.20, "gn": 43.97 }
+  ]
+}
