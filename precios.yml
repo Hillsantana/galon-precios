@@ -1,0 +1,35 @@
+name: Actualizar precios de combustibles
+
+on:
+  schedule:
+    # El MICM anuncia los precios los viernes en la tarde (hora RD = UTC-4).
+    - cron: '0 22 * * 5'   # viernes 6:00 PM RD
+    - cron: '0 1 * * 6'    # viernes 9:00 PM RD
+    - cron: '0 12 * * 6'   # sábado 8:00 AM RD
+    - cron: '0 16 * * 6'   # sábado 12:00 PM RD (último intento)
+  workflow_dispatch: {}    # botón "Run workflow" para correrlo a mano
+
+permissions:
+  contents: write
+
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Leer precios del MICM
+        run: node scripts/actualizar-precios.mjs
+      - name: Guardar si hay semana nueva
+        run: |
+          if git diff --quiet prices.json; then
+            echo "Nada nuevo."
+          else
+            git config user.name "galon-bot"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add prices.json
+            git commit -m "Precios MICM: $(date -u +%Y-%m-%d)"
+            git push
+          fi
